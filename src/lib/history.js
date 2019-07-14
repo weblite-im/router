@@ -9,7 +9,6 @@ let getLocation = source => {
 let createHistory = (source, options) => {
   let listeners = [];
   let location = getLocation(source);
-  let transitioning = false;
   let resolveTransition = () => {};
 
   return {
@@ -17,12 +16,7 @@ let createHistory = (source, options) => {
       return location;
     },
 
-    get transitioning() {
-      return transitioning;
-    },
-
     _onTransitionComplete() {
-      transitioning = false;
       resolveTransition();
     },
 
@@ -46,7 +40,7 @@ let createHistory = (source, options) => {
       state = { ...state, key: Date.now() + "" };
       // try...catch iOS Safari limits to 100 pushState calls
       try {
-        if (transitioning || replace) {
+        if (replace) {
           source.history.replaceState(state, null, to);
         } else {
           source.history.pushState(state, null, to);
@@ -56,7 +50,6 @@ let createHistory = (source, options) => {
       }
 
       location = getLocation(source);
-      transitioning = true;
       let transition = new Promise(res => (resolveTransition = res));
       listeners.forEach(listener => listener({ location, action: "PUSH" }));
       return transition;

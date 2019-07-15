@@ -1,6 +1,6 @@
 {
-  "name": "@reach/router",
-  "version": "1.2.1",
+  "name": "@web-lite/router",
+  "version": "1.2.2",
   "description": "Next generation Routing for React.",
   "main": "index.js",
   "module": "es/index.js",
@@ -69,7 +69,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reach/router.git"
+    "url": "git+https://github.com/weblite-im/router.git"
   },
   "keywords": [
     "react",
@@ -88,5 +88,5 @@
   "bugs": {
     "url": "https://github.com/reach/router/issues"
   },
-  "homepage": "https://github.com/reach/router#readme"
+  "homepage": "https://github.com/weblite-im/router#readme"
 }
